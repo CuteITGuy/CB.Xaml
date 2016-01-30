@@ -1,0 +1,96 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" SnapsToDevicePixels="true"
+                               Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                               StrokeThickness="1" StrokeDashArray="1 2" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <SolidColorBrush x:Key="MouseOverBackground" Color="#2626A0DA" />
+    <SolidColorBrush x:Key="MouseOverBorderBrush" Color="#7F26A0DA" />
+    <SolidColorBrush x:Key="MouseOverForeground" Color="DarkBlue" />
+    
+    <SolidColorBrush x:Key="SelectedInactiveBackground" Color="#B2F0E68C" />
+    <SolidColorBrush x:Key="SelectedInactiveBorderBrush" Color="#FFCBC79C" />
+    <SolidColorBrush x:Key="SelectedInactiveForeground" Color="#FF400000" />
+    
+    <SolidColorBrush x:Key="SelectedActiveBackground" Color="#7FFFD700" />
+    <SolidColorBrush x:Key="SelectedActiveBorderBrush" Color="Goldenrod" />
+    <SolidColorBrush x:Key="SelectedActiveForeground" Color="Maroon" />
+
+    <MultiTrigger x:Key="MouseOverTrigger" x:Shared="False">
+        <MultiTrigger.Conditions>
+            <Condition Property="UIElement.IsMouseOver" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter Property="Border.Background" TargetName="Bd" Value="{StaticResource MouseOverBackground}" />
+        <Setter Property="Border.BorderBrush" TargetName="Bd" Value="{StaticResource MouseOverBorderBrush}" />
+        <Setter Property="Control.Foreground" Value="{StaticResource MouseOverForeground}" />
+    </MultiTrigger>
+
+    <MultiTrigger x:Key="SelectedInactiveTrigger" x:Shared="False">
+        <MultiTrigger.Conditions>
+            <Condition Property="Selector.IsSelectionActive" Value="False" />
+            <Condition Property="ListBoxItem.IsSelected" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter Property="Border.Background" TargetName="Bd"
+                Value="{StaticResource SelectedInactiveBackground}" />
+        <Setter Property="Border.BorderBrush" TargetName="Bd"
+                Value="{StaticResource SelectedInactiveBorderBrush}" />
+        <Setter Property="Control.Foreground" Value="{StaticResource SelectedInactiveForeground}" />
+    </MultiTrigger>
+
+    <MultiTrigger x:Key="SelectedActiveTrigger" x:Shared="False">
+        <MultiTrigger.Conditions>
+            <Condition Property="Selector.IsSelectionActive" Value="True" />
+            <Condition Property="ListBoxItem.IsSelected" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter Property="Border.Background" TargetName="Bd"
+                Value="{StaticResource SelectedActiveBackground}" />
+        <Setter Property="Border.BorderBrush" TargetName="Bd"
+                Value="{StaticResource SelectedActiveBorderBrush}" />
+        <Setter Property="Control.Foreground" Value="{StaticResource SelectedActiveForeground}" />
+    </MultiTrigger>
+
+    <ControlTemplate x:Key="ListBoxItemTemplate" TargetType="{x:Type ListBoxItem}" x:Shared="False">
+        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"
+                SnapsToDevicePixels="true">
+            <ContentPresenter x:Name="Content"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <MultiTrigger></MultiTrigger>
+            <MultiTrigger></MultiTrigger>
+            <MultiTrigger></MultiTrigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground" TargetName="Bd"
+                        Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}" x:Shared="False">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Padding" Value="4,1" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+        <!--<Setter Property="Template" Value="{StaticResource ListBoxItemTemplate}" />-->
+    </Style>
+</ResourceDictionary>
