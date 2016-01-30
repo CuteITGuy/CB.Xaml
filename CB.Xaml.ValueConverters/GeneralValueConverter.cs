@@ -17,17 +17,27 @@ namespace CB.Xaml.ValueConverters
         public object DefaulConvertBackResult { get; set; } = DependencyProperty.UnsetValue;
 
         public object DefaultConvertResult { get; set; } = DependencyProperty.UnsetValue;
+
+        public object NullConvertBackResult { get; set; } = DependencyProperty.UnsetValue;
+
+        public object NullConvertResult { get; set; } = DependencyProperty.UnsetValue;
         #endregion
 
 
         #region Methods
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-            => ConvertMapping != null && ConvertMapping.ContainsKey(value)
-                   ? ConvertMapping[value] : DefaultConvertResult;
+            => value == null
+                   ? NullConvertResult
+                   : ConvertMapping != null && ConvertMapping.ContainsKey(value)
+                         ? ConvertMapping[value]
+                         : DefaultConvertResult;
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-            => ConvertBackMapping != null && ConvertBackMapping.ContainsKey(value)
-                   ? ConvertBackMapping[value] : DefaulConvertBackResult;
+            => value == null
+                   ? NullConvertBackResult
+                   : ConvertBackMapping != null && ConvertBackMapping.ContainsKey(value)
+                         ? ConvertBackMapping[value]
+                         : DefaulConvertBackResult;
         #endregion
     }
 }

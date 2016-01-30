@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Markup;
 
 [assembly: XmlnsDefinition("http://wpf.cb.com/xaml", "CB.Xaml.ValueConverters")]
+[assembly: XmlnsDefinition("http://wpf.cb.com/xaml", "CB.Xaml.ValueConverters.Impl")]
 [assembly: XmlnsDefinition("http://wpf.cb.com/xaml", "CB.Xaml.ValueConverters.StringConverters")]
 
 // General Information about an assembly is controlled through the following 

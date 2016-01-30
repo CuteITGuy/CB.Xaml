@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Xaml.Commands", "CB.Xaml
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Xaml.MarkupExtensions", "CB.Xaml.MarkupExtensions\CB.Xaml.MarkupExtensions.csproj", "{3B9A1E01-6A86-488A-864B-399098E911E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "Playground\Playground.csproj", "{B68592EE-84FE-4880-BCEF-910D87705A5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Model.Common", "..\CB.Model\CB.Model.Common\CB.Model.Common.csproj", "{33A5DF99-1312-4023-A6EF-EABB9848F5A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,22 @@ Global
 		{3B9A1E01-6A86-488A-864B-399098E911E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3B9A1E01-6A86-488A-864B-399098E911E8}.Release|x64.ActiveCfg = Release|Any CPU
 		{3B9A1E01-6A86-488A-864B-399098E911E8}.Release|x64.Build.0 = Release|Any CPU
+		{B68592EE-84FE-4880-BCEF-910D87705A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B68592EE-84FE-4880-BCEF-910D87705A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B68592EE-84FE-4880-BCEF-910D87705A5E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B68592EE-84FE-4880-BCEF-910D87705A5E}.Debug|x64.Build.0 = Debug|Any CPU
+		{B68592EE-84FE-4880-BCEF-910D87705A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B68592EE-84FE-4880-BCEF-910D87705A5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B68592EE-84FE-4880-BCEF-910D87705A5E}.Release|x64.ActiveCfg = Release|Any CPU
+		{B68592EE-84FE-4880-BCEF-910D87705A5E}.Release|x64.Build.0 = Release|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Debug|x64.Build.0 = Debug|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Release|x64.ActiveCfg = Release|Any CPU
+		{33A5DF99-1312-4023-A6EF-EABB9848F5A6}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

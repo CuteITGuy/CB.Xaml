@@ -68,6 +68,7 @@
     <Compile Include="Impl\GeneralDictionary.cs" />
     <Compile Include="Impl\StringHelper.cs" />
     <Compile Include="NullableBoolConverter.cs" />
+    <Compile Include="NullityConverter.cs" />
     <Compile Include="PathToFileNameConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Impl\RelativeOperation.cs" />
