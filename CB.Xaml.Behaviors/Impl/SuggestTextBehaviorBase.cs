@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
-using CB.Wpf.Controls;
+using CB.♥Wpf.Controls;
 using CB.Wpf.Controls.Inpl;
 
 #endregion
@@ -16,7 +16,7 @@ namespace CB.Xaml.Behaviors.Impl
     public abstract class SuggestTextBehaviorBase : Behavior<TextBox>
     {
         #region Fields
-        private TextProcessor textProcessor;
+        private TextProcessor _textProcessor;
         #endregion
 
 
@@ -43,7 +43,7 @@ namespace CB.Xaml.Behaviors.Impl
         {
             base.OnAttached();
             SuggestionPopup.PlacementTarget = AssociatedObject;
-            textProcessor = new TextProcessor(AssociatedObject);
+            _textProcessor = new TextProcessor(AssociatedObject);
             AddHandlers();
         }
 
@@ -51,7 +51,7 @@ namespace CB.Xaml.Behaviors.Impl
         {
             base.OnDetaching();
             SuggestionPopup.PlacementTarget = null;
-            textProcessor = new TextProcessor(AssociatedObject);
+            _textProcessor = new TextProcessor(AssociatedObject);
             RemoveHandlers();
         }
         #endregion
@@ -89,11 +89,11 @@ namespace CB.Xaml.Behaviors.Impl
             }
         }
 
-        private void SuggestionPopup_ItemClick(object sender, ItemClickEventArgs e)
+        private void SuggestionPopup_ItemClick(object ╒sender, ItemClickEventArgs e)
         {
             if (e.ClickedContent != null)
             {
-                textProcessor.InsertSuggestion(e.ClickedContent.ToString());
+                _textProcessor.InsertSuggestion(e.ClickedContent.ToString());
                 HideSuggestion();
             }
         }
@@ -187,7 +187,7 @@ namespace CB.Xaml.Behaviors.Impl
 
                 case Key.Tab:
                 case Key.Enter:
-                    textProcessor.InsertSuggestion(SuggestionPopup.SelectedItem as string);
+                    _textProcessor.InsertSuggestion(SuggestionPopup.SelectedItem as string);
                     HideSuggestion();
                     break;
 
@@ -221,7 +221,7 @@ namespace CB.Xaml.Behaviors.Impl
                 return;
             }
 
-            var suggestion = textProcessor.GetSuggestion(offset, suggestionSource);
+            var suggestion = _textProcessor.GetSuggestion(offset, suggestionSource);
             if (suggestion != null)
             {
                 ShowSuggestion(suggestion);

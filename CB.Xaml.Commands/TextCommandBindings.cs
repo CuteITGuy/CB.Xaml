@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
-using CB.Data;
+using CB.Model.Common;
 
 
 namespace CB.Xaml.Commands
@@ -10,7 +10,7 @@ namespace CB.Xaml.Commands
     public class TextCommandBindings
     {
         #region Fields
-        private static readonly Dictionary<Key<TextBox, TextCommandType>, CommandBinding> commandBindingDictionary =
+        private static readonly Dictionary<Key<TextBox, TextCommandType>, CommandBinding> _commandBindingDictionary =
             new Dictionary<Key<TextBox, TextCommandType>, CommandBinding>();
         #endregion
 
@@ -19,15 +19,15 @@ namespace CB.Xaml.Commands
         public static CommandBinding CreateCommandBinding(TextBox textBox, TextCommandType textCommandType)
         {
             var key = new Key<TextBox, TextCommandType>(textBox, textCommandType);
-            if (commandBindingDictionary.ContainsKey(key))
+            if (_commandBindingDictionary.ContainsKey(key))
             {
-                return commandBindingDictionary[key];
+                return _commandBindingDictionary[key];
             }
 
             var commandBinding = new CommandBinding(GetCommand(textCommandType),
                 GetExecuteEventHandler(textBox, textCommandType),
                 GetCanExecuteEventHandler(textBox, textCommandType));
-            commandBindingDictionary[key] = commandBinding;
+            _commandBindingDictionary[key] = commandBinding;
             return commandBinding;
         }
         #endregion
@@ -49,7 +49,7 @@ namespace CB.Xaml.Commands
                         };
 
                 default:
-                    throw new ArgumentOutOfRangeException("textCommandType", textCommandType, null);
+                    throw new ArgumentOutOfRangeException(nameof(textCommandType), textCommandType, null);
             }
         }
 
@@ -67,7 +67,7 @@ namespace CB.Xaml.Commands
                     return TextCommands.TrimStart;
 
                 default:
-                    throw new ArgumentOutOfRangeException("textCommandType", textCommandType, null);
+                    throw new ArgumentOutOfRangeException(nameof(textCommandType), textCommandType, null);
             }
         }
 
@@ -91,7 +91,7 @@ namespace CB.Xaml.Commands
                             textBox.Text = TextProcessor.TrimAllLines(textBox.Text, TrimmingPosition.TrimStart);
                         };
                 default:
-                    throw new ArgumentOutOfRangeException("textCommandType", textCommandType, null);
+                    throw new ArgumentOutOfRangeException(nameof(textCommandType), textCommandType, null);
             }
         }
         #endregion

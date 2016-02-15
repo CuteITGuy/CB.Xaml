@@ -8,27 +8,27 @@ namespace CB.Xaml.Behaviors.Impl
         #region Overridden Methods
         protected override double GetTop()
         {
-            return element.Top;
+            return _element.Top;
         }
 
         protected override double GetLeft()
         {
-            return element.Left;
+            return _element.Left;
         }
 
         protected override bool IsValidState()
         {
-            return element.WindowState != WindowState.Maximized;
+            return _element.WindowState != WindowState.Maximized;
         }
 
         protected override void SetLeft(double value)
         {
-            element.Left = value;
+            _element.Left = value;
         }
 
         protected override void SetTop(double value)
         {
-            element.Top = value;
+            _element.Top = value;
         }
         #endregion
     }
