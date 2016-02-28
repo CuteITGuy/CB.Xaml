@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
-using CB.Wpf.Media;
+using CB.UWpf.Media;
 
 
 namespace CB.Xaml.ValueConverters

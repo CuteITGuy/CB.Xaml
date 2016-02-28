@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Shell;
-using Cursor = CB.Interop.DesktopAppUI.Cursor;
 
 
 namespace CB.Xaml.Behaviors.Impl
@@ -11,18 +10,18 @@ namespace CB.Xaml.Behaviors.Impl
     public abstract class ResizeElementImpl<TElement> : ResizeElementImpl where TElement : FrameworkElement
     {
         #region Fields & Properties
-        private ElementMouseEventHelper mouseEventHelper;
+        private ElementMouseEventHelper _mouseEventHelper;
 
-        protected TElement element;
+        protected TElement _element;
 
         public virtual TElement Element
         {
-            get { return element; }
+            get { return _element; }
             set
             {
-                element = value;
-                normalCursor = element.Cursor;
-                mouseEventHelper = new ElementMouseEventHelper(element);
+                _element = value;
+                normalCursor = _element.Cursor;
+                _mouseEventHelper = new ElementMouseEventHelper(_element);
             }
         }
         #endregion
@@ -34,7 +33,7 @@ namespace CB.Xaml.Behaviors.Impl
             Element.PreviewMouseLeftButtonDown += AssociatedObject_PreviewMouseLeftButtonDown;
             Element.PreviewMouseLeftButtonUp += AssociatedObject_PreviewMouseLeftButtonUp;
             Element.PreviewMouseMove += AssociatedObject_PreviewMouseMove;
-            mouseEventHelper.PreviewMouseLeftButtonDoubleClick += mouseEventHelper_PreviewMouseLeftButtonDoubleClick;
+            _mouseEventHelper.PreviewMouseLeftButtonDoubleClick += mouseEventHelper_PreviewMouseLeftButtonDoubleClick;
         }
 
         public void RemoveHandlers()
@@ -42,7 +41,7 @@ namespace CB.Xaml.Behaviors.Impl
             Element.PreviewMouseLeftButtonDown -= AssociatedObject_PreviewMouseLeftButtonDown;
             Element.PreviewMouseLeftButtonUp -= AssociatedObject_PreviewMouseLeftButtonUp;
             Element.PreviewMouseMove -= AssociatedObject_PreviewMouseMove;
-            mouseEventHelper.PreviewMouseLeftButtonDoubleClick -= mouseEventHelper_PreviewMouseLeftButtonDoubleClick;
+            _mouseEventHelper.PreviewMouseLeftButtonDoubleClick -= mouseEventHelper_PreviewMouseLeftButtonDoubleClick;
         }
         #endregion
 
@@ -254,7 +253,7 @@ namespace CB.Xaml.Behaviors.Impl
 
         protected static Point GetCurrentMousePosition()
         {
-            var currentMouse = Cursor.GetCursorPos();
+            var currentMouse = Win32.Cursors.Cursor.GetCursorPos();
             return new Point(currentMouse.X, currentMouse.Y);
         }
 

@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CB.Data">
-      <HintPath>..\..\CB.Data\CB.Data\bin\Release\CB.Data.dll</HintPath>
+    <Reference Include="CB.Model.Common">
+      <HintPath>..\..\CB.Model\CB.Model.Common\bin\Release\CB.Model.Common.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
