@@ -6,14 +6,14 @@ using System.Windows.Data;
 
 namespace CB.Xaml.ValueConverters
 {
-    public class BooleanToObjectConverter: IValueConverter
+    public class BooleanToValueConverter: IValueConverter
     {
         #region Methods
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
             {
-                return ObjectWhenNull;
+                return ValueIfNull;
             }
 
             if (!(value is bool?))
@@ -22,7 +22,7 @@ namespace CB.Xaml.ValueConverters
             }
 
             var nullableBool = (bool?)value;
-            return nullableBool.Value ? ObjectWhenTrue : ObjectWhenFalse;
+            return nullableBool.Value ? ValueIfTrue : ValueIfFalse;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -32,17 +32,17 @@ namespace CB.Xaml.ValueConverters
                 return DependencyProperty.UnsetValue;
             }
 
-            if (value == ObjectWhenNull)
+            if (value == ValueIfNull)
             {
                 return null;
             }
 
-            if (value == ObjectWhenFalse)
+            if (value == ValueIfFalse)
             {
                 return false;
             }
 
-            if (value == ObjectWhenTrue)
+            if (value == ValueIfTrue)
             {
                 return true;
             }
@@ -53,11 +53,11 @@ namespace CB.Xaml.ValueConverters
 
 
         #region Properties
-        public object ObjectWhenFalse { get; set; }
+        public object ValueIfFalse { get; set; }
 
-        public object ObjectWhenNull { get; set; }
+        public object ValueIfNull { get; set; }
 
-        public object ObjectWhenTrue { get; set; }
+        public object ValueIfTrue { get; set; }
         #endregion
     }
 }

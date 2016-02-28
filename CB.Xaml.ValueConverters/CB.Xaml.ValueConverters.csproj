@@ -52,7 +52,7 @@
     <Compile Include="AlphaColorConverter.cs" />
     <Compile Include="ArgbConverter.cs" />
     <Compile Include="BooleanNotConverter.cs" />
-    <Compile Include="BooleanToObjectConverter.cs" />
+    <Compile Include="BooleanToValueConverter.cs" />
     <Compile Include="ColorScaleConverter.cs" />
     <Compile Include="ColorToContrastColorConverter.cs" />
     <Compile Include="ColorToStringConverter.cs" />

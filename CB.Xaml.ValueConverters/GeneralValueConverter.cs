@@ -2,11 +2,13 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Markup;
 using CB.Xaml.ValueConverters.Impl;
 
 
 namespace CB.Xaml.ValueConverters
 {
+    [ContentProperty(nameof(ConvertMapping))]
     public class GeneralValueConverter: IValueConverter
     {
         #region  Properties & Indexers
