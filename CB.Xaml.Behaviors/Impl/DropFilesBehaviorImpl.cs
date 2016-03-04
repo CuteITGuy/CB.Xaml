@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Interactivity;
-using CB.IO;
+using CB.IO.Common;
 
 
 namespace CB.Xaml.Behaviors.Impl

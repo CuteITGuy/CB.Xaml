@@ -3,17 +3,32 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Shell;
+using Cursor = CB.Win32.Cursors.Cursor;
 
 
 namespace CB.Xaml.Behaviors.Impl
 {
-    public abstract class ResizeElementImpl<TElement> : ResizeElementImpl where TElement : FrameworkElement
+    public abstract class ResizeElementImpl<TElement>: ResizeElementImpl where TElement: FrameworkElement
     {
-        #region Fields & Properties
-        private ElementMouseEventHelper _mouseEventHelper;
-
+        #region Fields
         protected TElement _element;
+        private ElementMouseEventHelper _mouseEventHelper;
+        #endregion
 
+
+        #region Abstract
+        protected abstract double GetLeft();
+        protected abstract double GetTop();
+
+        protected abstract bool IsValidState();
+
+        protected abstract void SetLeft(double value);
+
+        protected abstract void SetTop(double value);
+        #endregion
+
+
+        #region  Properties & Indexers
         public virtual TElement Element
         {
             get { return _element; }
@@ -43,19 +58,6 @@ namespace CB.Xaml.Behaviors.Impl
             Element.PreviewMouseMove -= AssociatedObject_PreviewMouseMove;
             _mouseEventHelper.PreviewMouseLeftButtonDoubleClick -= mouseEventHelper_PreviewMouseLeftButtonDoubleClick;
         }
-        #endregion
-
-
-        #region Abstract Methods
-        protected abstract double GetTop();
-
-        protected abstract double GetLeft();
-
-        protected abstract bool IsValidState();
-
-        protected abstract void SetLeft(double value);
-
-        protected abstract void SetTop(double value);
         #endregion
 
 
@@ -106,10 +108,10 @@ namespace CB.Xaml.Behaviors.Impl
         protected static double CalculateActualDistance(double desiredDistance, double minDistance, double maxDistance)
         {
             return desiredDistance < minDistance
-                ? minDistance
-                : desiredDistance > maxDistance
-                    ? maxDistance
-                    : desiredDistance;
+                       ? minDistance
+                       : desiredDistance > maxDistance
+                             ? maxDistance
+                             : desiredDistance;
         }
 
         protected double CalculateActualHorizontalDistance(double desiredDistance)
@@ -130,9 +132,9 @@ namespace CB.Xaml.Behaviors.Impl
             double currentLeft = GetLeft(), currentTop = GetTop();
 
             bool leftResize = currentPosition.X - currentLeft < RESIZE_ZONE,
-                rightResize = Element.Width + currentLeft - currentPosition.X < RESIZE_ZONE,
-                topResize = currentPosition.Y - currentTop < RESIZE_ZONE,
-                bottomResize = Element.Height + currentTop - currentPosition.Y < RESIZE_ZONE;
+                 rightResize = Element.Width + currentLeft - currentPosition.X < RESIZE_ZONE,
+                 topResize = currentPosition.Y - currentTop < RESIZE_ZONE,
+                 bottomResize = Element.Height + currentTop - currentPosition.Y < RESIZE_ZONE;
 
             if (!(leftResize || rightResize || topResize || bottomResize))
             {
@@ -253,7 +255,7 @@ namespace CB.Xaml.Behaviors.Impl
 
         protected static Point GetCurrentMousePosition()
         {
-            var currentMouse = Win32.Cursors.Cursor.GetCursorPos();
+            var currentMouse = Cursor.GetCursorPos();
             return new Point(currentMouse.X, currentMouse.Y);
         }
 

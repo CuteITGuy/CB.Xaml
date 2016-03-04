@@ -7,7 +7,7 @@ using CB.Wpf.Controls;
 
 namespace CB.Xaml.Behaviors.Impl
 {
-    public class SuggestionPopup : ListPopup
+    public class SuggestionPopup: ListPopup
     {
         #region Fields
         private const double DEFAULT_OPACITY = 0.92;
@@ -16,10 +16,10 @@ namespace CB.Xaml.Behaviors.Impl
         #endregion
 
 
-        #region Constructors & Destructors
+        #region  Constructors & Destructor
         static SuggestionPopup()
         {
-            PlacementTargetProperty.OverrideMetadata(typeof (SuggestionPopup),
+            PlacementTargetProperty.OverrideMetadata(typeof(SuggestionPopup),
                 new FrameworkPropertyMetadata(OnPlacementTargetChanged));
         }
 
@@ -27,31 +27,6 @@ namespace CB.Xaml.Behaviors.Impl
         {
             AllowsTransparency = true;
             ResetPopupOpacity();
-        }
-        #endregion
-
-
-        #region Overridden
-        protected override void OnMouseEnter(MouseEventArgs e)
-        {
-            SetPopupFullOpacity();
-            base.OnMouseEnter(e);
-        }
-
-        protected override void OnMouseLeave(MouseEventArgs e)
-        {
-            base.OnMouseLeave(e);
-            ResetPopupOpacity();
-        }
-
-        protected override void OnSettingListBoxItemStyle(ResourceDictionary resourceDictionary,
-            IList<SetterBase> setters, IList<TriggerBase> triggers)
-        {
-            base.OnSettingListBoxItemStyle(resourceDictionary, setters, triggers);
-
-            var previewMouseMoveEventSetter = new EventSetter(PreviewMouseMoveEvent,
-                new MouseEventHandler(ListBoxItems_PreviewMouseMove));
-            setters.Add(previewMouseMoveEventSetter);
         }
         #endregion
 
@@ -157,6 +132,31 @@ namespace CB.Xaml.Behaviors.Impl
                     ResetPopupOpacity();
                     break;
             }
+        }
+        #endregion
+
+
+        #region Overridden
+        protected override void OnMouseEnter(MouseEventArgs e)
+        {
+            SetPopupFullOpacity();
+            base.OnMouseEnter(e);
+        }
+
+        protected override void OnMouseLeave(MouseEventArgs e)
+        {
+            base.OnMouseLeave(e);
+            ResetPopupOpacity();
+        }
+
+        protected override void OnSettingListBoxItemStyle(ResourceDictionary resourceDictionary,
+            IList<SetterBase> setters, IList<TriggerBase> triggers)
+        {
+            base.OnSettingListBoxItemStyle(resourceDictionary, setters, triggers);
+
+            var previewMouseMoveEventSetter = new EventSetter(PreviewMouseMoveEvent,
+                new MouseEventHandler(ListBoxItems_PreviewMouseMove));
+            setters.Add(previewMouseMoveEventSetter);
         }
         #endregion
     }

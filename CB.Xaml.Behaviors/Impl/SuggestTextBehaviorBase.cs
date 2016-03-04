@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
-using CB.♥Wpf.Controls;
 using CB.Wpf.Controls.Inpl;
 
 #endregion
@@ -13,23 +12,18 @@ using CB.Wpf.Controls.Inpl;
 
 namespace CB.Xaml.Behaviors.Impl
 {
-    public abstract class SuggestTextBehaviorBase : Behavior<TextBox>
+    public abstract class SuggestTextBehaviorBase: Behavior<TextBox>
     {
         #region Fields
         private TextProcessor _textProcessor;
         #endregion
 
 
-        #region Constructors & Destructors
+        #region  Constructors & Destructor
         protected SuggestTextBehaviorBase()
         {
             InitializeSuggestionPopup();
         }
-        #endregion
-
-
-        #region Properties & Indexers
-        public IListPopup SuggestionPopup { get; set; }
         #endregion
 
 
@@ -38,22 +32,8 @@ namespace CB.Xaml.Behaviors.Impl
         #endregion
 
 
-        #region Overridden
-        protected override void OnAttached()
-        {
-            base.OnAttached();
-            SuggestionPopup.PlacementTarget = AssociatedObject;
-            _textProcessor = new TextProcessor(AssociatedObject);
-            AddHandlers();
-        }
-
-        protected override void OnDetaching()
-        {
-            base.OnDetaching();
-            SuggestionPopup.PlacementTarget = null;
-            _textProcessor = new TextProcessor(AssociatedObject);
-            RemoveHandlers();
-        }
+        #region  Properties & Indexers
+        public IListPopup SuggestionPopup { get; set; }
         #endregion
 
 
@@ -89,7 +69,7 @@ namespace CB.Xaml.Behaviors.Impl
             }
         }
 
-        private void SuggestionPopup_ItemClick(object ╒sender, ItemClickEventArgs e)
+        private void SuggestionPopup_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (e.ClickedContent != null)
             {
@@ -236,8 +216,26 @@ namespace CB.Xaml.Behaviors.Impl
             }
         }
         #endregion
-    }
 
+
+        #region Overridden
+        protected override void OnAttached()
+        {
+            base.OnAttached();
+            SuggestionPopup.PlacementTarget = AssociatedObject;
+            _textProcessor = new TextProcessor(AssociatedObject);
+            AddHandlers();
+        }
+
+        protected override void OnDetaching()
+        {
+            base.OnDetaching();
+            SuggestionPopup.PlacementTarget = null;
+            _textProcessor = new TextProcessor(AssociatedObject);
+            RemoveHandlers();
+        }
+        #endregion
+    }
 
     /*public abstract class SuggestTextBehaviorBase : Behavior<TextBox>
     {

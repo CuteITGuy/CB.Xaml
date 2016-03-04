@@ -48,19 +48,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CB.IO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\CB.IO\CB.IO\bin\Release\CB.IO.dll</HintPath>
-    </Reference>
-    <Reference Include="CB.Win32.Cursors">
-      <HintPath>..\..\CB.Win32\CB.Win32.Cursors\bin\Release\CB.Win32.Cursors.dll</HintPath>
-    </Reference>
-    <Reference Include="CB.Wpf.Controls">
-      <HintPath>..\..\WPF\CB.Wpf.Controls\bin\Release\CB.Wpf.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="CB.Xaml.AttachedProperties">
-      <HintPath>..\CB.Xaml.AttachedProperties\bin\Release\CB.Xaml.AttachedProperties.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -109,7 +96,20 @@
     <Compile Include="TabStyle.cs" />
     <Compile Include="TextBoxTabSizeBehavior.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\CB.IO\CB.IO.Common\CB.IO.Common.csproj">
+      <Project>{65789d31-922e-4801-a486-99c06827448c}</Project>
+      <Name>CB.IO.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.Win32\CB.Win32.Cursors\CB.Win32.Cursors.csproj">
+      <Project>{f4eebce3-ca88-494c-871a-fdf4a7a1aa64}</Project>
+      <Name>CB.Win32.Cursors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.WPF\CB.Wpf.Controls\CB.Wpf.Controls.csproj">
+      <Project>{40ddc946-cd13-4734-990f-fbff6914652e}</Project>
+      <Name>CB.Wpf.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
