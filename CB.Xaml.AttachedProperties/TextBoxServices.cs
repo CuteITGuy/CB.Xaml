@@ -11,8 +11,8 @@ namespace CB.Xaml.AttachedProperties
 {
     public static class TextBoxServices
     {
-        #region  Fields
-        private static readonly List<DependencyObject> clkObjects = new List<DependencyObject>();
+        #region Fields
+        private static readonly List<DependencyObject> _clkObjects = new List<DependencyObject>();
         #endregion
 
 
@@ -20,17 +20,6 @@ namespace CB.Xaml.AttachedProperties
         public static readonly DependencyProperty AllowFileDropProperty = DependencyProperty.RegisterAttached(
             "AllowFileDrop", typeof(bool), typeof(TextBoxServices),
             new PropertyMetadata(false, OnAllowFileDropChanged));
-
-        private static void OnAllowFileDropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var textBox = d as TextBox;
-            if (textBox == null || !(bool)e.NewValue) return;
-            
-                textBox.AllowDrop = true;
-                textBox.PreviewDragOver += textBox_PreviewDragOver;
-                textBox.DragEnter += textBox_DragEnter;
-                textBox.Drop += textBox_Drop;
-        }
 
         [Category("TextBoxServices")]
         [AttachedPropertyBrowsableForType(typeof(TextBox))]
@@ -66,10 +55,10 @@ namespace CB.Xaml.AttachedProperties
 
         private static object CoerceClickedObject(DependencyObject d, object baseValue)
         {
-            if (!clkObjects.Contains(d) && d is IInputElement)
+            if (!_clkObjects.Contains(d) && d is IInputElement)
             {
                 ((IInputElement)d).KeyDown += inputElement_KeyDown;
-                clkObjects.Add(d);
+                _clkObjects.Add(d);
             }
             return baseValue;
         }
@@ -77,17 +66,6 @@ namespace CB.Xaml.AttachedProperties
         public static readonly DependencyProperty TextCommandsProperty = DependencyProperty.RegisterAttached(
             "TextCommandFlags", typeof(TextCommandFlags), typeof(TextBoxServices),
             new PropertyMetadata(default(TextCommandFlags), OnTextCommandsChanged));
-
-        private static void OnTextCommandsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var textBox = d as TextBox;
-            if (textBox == null)
-            {
-                return;
-            }
-
-            AddOrRemoveCommandBindings(textBox, (TextCommandFlags)e.NewValue);
-        }
 
         [Category("TextBoxServices")]
         [AttachedPropertyBrowsableForType(typeof(TextBox))]
@@ -188,8 +166,8 @@ namespace CB.Xaml.AttachedProperties
         {
             RoutedEvent res = null;
             for (var type = element.GetType();
-                 type != null && type != typeof(object) && res == null;
-                 type = type.BaseType)
+                type != null && type != typeof(object) && res == null;
+                type = type.BaseType)
             {
                 var routedEvents = EventManager.GetRoutedEventsForOwner(type);
                 if (routedEvents != null)
@@ -198,6 +176,28 @@ namespace CB.Xaml.AttachedProperties
                 }
             }
             return res;
+        }
+
+        private static void OnAllowFileDropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var textBox = d as TextBox;
+            if (textBox == null || !(bool)e.NewValue) return;
+
+            textBox.AllowDrop = true;
+            textBox.PreviewDragOver += textBox_PreviewDragOver;
+            textBox.DragEnter += textBox_DragEnter;
+            textBox.Drop += textBox_Drop;
+        }
+
+        private static void OnTextCommandsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var textBox = d as TextBox;
+            if (textBox == null)
+            {
+                return;
+            }
+
+            AddOrRemoveCommandBindings(textBox, (TextCommandFlags)e.NewValue);
         }
         #endregion
     }

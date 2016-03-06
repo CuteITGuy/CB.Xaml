@@ -45,6 +45,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Impl\AttachedCommand.cs" />
+    <Compile Include="CommandServices.cs" />
     <Compile Include="CursorServices.cs" />
     <Compile Include="ItemsControlServices.cs" />
     <Compile Include="Impl\ListBoxBrushes.cs" />
@@ -55,6 +57,14 @@
     <Compile Include="TextCommandFlags.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CB.Dynamic\CB.Dynamic.CompilerServices\CB.Dynamic.CompilerServices.csproj">
+      <Project>{e1091216-efe2-4065-b66d-4f90346b5991}</Project>
+      <Name>CB.Dynamic.CompilerServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
+      <Project>{33a5df99-1312-4023-a6ef-eabb9848f5a6}</Project>
+      <Name>CB.Model.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CB.Xaml.Commands\CB.Xaml.Commands.csproj">
       <Project>{C5DC3209-4A92-4243-8188-ADBD4FA87FC3}</Project>
       <Name>CB.Xaml.Commands</Name>

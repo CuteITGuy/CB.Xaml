@@ -1,0 +1,71 @@
+﻿<Window x:Class="Test.Wpf.CB.Xaml.AttachedProperties.CommandServices.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test.Wpf.CB.Xaml.AttachedProperties.CommandServices"
+        xmlns:xaml="http://wpf.cb.com/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight" FontSize="24">
+
+    <Window.Resources>
+        <local:TestViewModel x:Key="ViewModel" />
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="16" />
+            <Setter Property="MinWidth" Value="180" />
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <StaticResource ResourceKey="ViewModel" />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBox Grid.Row="0" Grid.Column="0"
+                 Text="{Binding Min}" />
+
+        <TextBox Grid.Row="0" Grid.Column="1"
+                 Text="{Binding Max}" />
+
+        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                 Text="{Binding Value}" />
+
+        <TextBox Grid.Row="2" Grid.Column="0"
+                 Text="+ 5">
+            <xaml:CommandServices.AttachedCommand>
+                <xaml:AttachedCommand EventName="MouseDoubleClick" UseCanExecute="True"
+                                      Command="{Binding Source={StaticResource ViewModel}, Path=AddCommand}">
+                    <xaml:AttachedCommand.CommandParameter>
+                        <sys:Int32>5</sys:Int32>
+                    </xaml:AttachedCommand.CommandParameter>
+                </xaml:AttachedCommand>
+            </xaml:CommandServices.AttachedCommand>
+        </TextBox>
+
+        <TextBox Grid.Row="2" Grid.Column="1"
+                 Text="- 5">
+            <xaml:CommandServices.AttachedCommand>
+                <xaml:AttachedCommand EventName="MouseDoubleClick" UseCanExecute="True"
+                    Command="{Binding Source={StaticResource ViewModel}, Path=SubtractCommand}">
+                    <xaml:AttachedCommand.CommandParameter>
+                        <sys:Int32>5</sys:Int32>
+                    </xaml:AttachedCommand.CommandParameter>
+                </xaml:AttachedCommand>
+            </xaml:CommandServices.AttachedCommand>
+        </TextBox>
+    </Grid>
+</Window>
