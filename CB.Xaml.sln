@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Dynamic.CompilerServices
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Wpf.CB.Xaml.AttachedProperties.CommandServices", "Test.Wpf.CB.Xaml.AttachedProperties.CommandServices\Test.Wpf.CB.Xaml.AttachedProperties.CommandServices.csproj", "{BF3C67CF-CA02-4A59-A19F-50F2D380317D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Media.Brushes", "..\CB.Media\CB.Media.Brushes\CB.Media.Brushes.csproj", "{61A1FDD6-1482-4D6C-A276-51D4124EC53B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +133,14 @@ Global
 		{BF3C67CF-CA02-4A59-A19F-50F2D380317D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF3C67CF-CA02-4A59-A19F-50F2D380317D}.Release|x64.ActiveCfg = Release|Any CPU
 		{BF3C67CF-CA02-4A59-A19F-50F2D380317D}.Release|x64.Build.0 = Release|Any CPU
+		{61A1FDD6-1482-4D6C-A276-51D4124EC53B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61A1FDD6-1482-4D6C-A276-51D4124EC53B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61A1FDD6-1482-4D6C-A276-51D4124EC53B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{61A1FDD6-1482-4D6C-A276-51D4124EC53B}.Debug|x64.Build.0 = Debug|Any CPU
+		{61A1FDD6-1482-4D6C-A276-51D4124EC53B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61A1FDD6-1482-4D6C-A276-51D4124EC53B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61A1FDD6-1482-4D6C-A276-51D4124EC53B}.Release|x64.ActiveCfg = Release|Any CPU
+		{61A1FDD6-1482-4D6C-A276-51D4124EC53B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

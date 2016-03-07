@@ -4,7 +4,8 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
-using CB.Wpf.Media;
+using CB.Media.Brushes.Impl;
+using static System.Windows.Media.ColorConverter;
 
 
 namespace CB.Xaml.ValueConverters
@@ -86,10 +87,11 @@ namespace CB.Xaml.ValueConverters
                 return (Color)value;
             }
 
-            if (value is string)
+            var valueString = value as string;
+            if (valueString != null)
             {
-                var colorCvr = new ColorConverter();
-                return (Color)ColorConverter.ConvertFromString(value as string);
+                var colorString = ConvertFromString(valueString);
+                if (colorString != null) return (Color)colorString;
             }
 
             throw new NotSupportedException();

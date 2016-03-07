@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ColorHelper">
-      <HintPath>..\..\WPF\Media\ColorHelper\bin\Release\ColorHelper.dll</HintPath>
-    </Reference>
     <Reference Include="Humanizer">
       <HintPath>..\..\Open Source\Humanizer\src\Humanizer\bin\Debug\Humanizer.dll</HintPath>
     </Reference>
@@ -82,6 +79,12 @@
     <Compile Include="TimePart.cs" />
     <Compile Include="TimeToDoubleConverter.cs" />
     <Compile Include="Impl\ValueConversionHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CB.Media\CB.Media.Brushes\CB.Media.Brushes.csproj">
+      <Project>{61a1fdd6-1482-4d6c-a276-51d4124ec53b}</Project>
+      <Name>CB.Media.Brushes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
