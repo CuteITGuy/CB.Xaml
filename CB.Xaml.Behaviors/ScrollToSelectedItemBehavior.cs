@@ -26,14 +26,6 @@ namespace CB.Xaml.Behaviors
         {
             var selectedItem = AssociatedObject.SelectedItem;
             AssociatedObject.ScrollIntoView(selectedItem);
-            /*if (selectedItem==null)
-            {
-                AssociatedObject.sc
-            }
-            else
-            {
-                
-            }*/
         }
         #endregion
 
