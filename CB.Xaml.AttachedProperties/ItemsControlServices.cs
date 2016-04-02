@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace CB.Xaml.AttachedProperties
         private static readonly List<DependencyObject> _inaTextObjects = new List<DependencyObject>();
         private static readonly List<DependencyObject> _isRolObjects = new List<DependencyObject>();
         #endregion
-
+        
 
         #region Dependency Properties
         [Category("ItemsControlServices")]

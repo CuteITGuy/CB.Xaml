@@ -21,7 +21,7 @@ namespace CB.Xaml.ValueConverters
 
             var enumValue = (Enum)value;
             var enumType = value.GetType();
-            var enums = Enum.GetValues(enumType).Cast<Enum>().Where(e => enumValue.HasFlag(e));
+            var enums = Enum.GetValues(enumType).Cast<Enum>().Where(e => enumValue.HasFlag(e)).ToArray();
             return enums;
         }
 
